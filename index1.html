@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQL</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="quadrado_top">
+    <h1>Álgebra Relacional - Comandos e Categorias</h1>
+   </div>
+    <P>A álgebra relacional é uma linguagem de consulta procedural.
+     Ela consiste em um conjunto de operações que tornam uma ou duas tabelas como entradas e produzem uma nova tabela como resultado. 
+     Essas operações baseiam-se na teoria dos conjuntos (as tabelas correspondem a conjuntos).
+     Linguagem procedural: linguagem que requer sempre a existência de definição quanto à ordem em que as operações serão realizadas.</P>
+     <h1>OPERADORES</h1>
+
+     <P>São definidas nove operações ou operadores para se trabalhar com álgebra relacional, eles podem ser classificados da seguinte maneira:</P>
+     <P>Fundamentais: Através dela qualquer expressão de consulta de dados é permitida:</P>
+
+     <div class="categorias">
+        <ul>
+            <li>
+            <strong>Seleção (σ)</strong> - A seleção, como o próprio nome já diz, seleciona linhas, tuplas por meio de uma determinada condição.</li>
+            <li><strong>Projeção (π)</strong> - A projeção é utilizada quando existe a necessidade de pegar somente colunas de interesse em uma relação, e não trabalhar com todas as colunas dessa relação.</li>
+            <li><strong>União (⋃)</strong> - A união entre duas relações AUB, traz em uma nova relação C com todas as tuplas existentes em A e B, sem repetição de tupla.</li>
+            <li><strong>Diferença de conjuntos (−)</strong> - A diferença entre duas relações A – B, traz uma nova relação C com tuplas que existem em A mas não existem em B, ou seja, que só existem em A. Do mesmo, equivale para B – A, traz uma nova relação com as tuplas que só existem em B, portanto, a ordem é importante.</li>
+            <li><strong>Produto cartesiano (×)</strong> - O produto cartesiano entre duas relações A X B traz uma nova relação C que contém todos os campos, colunas que A e B contém, e a combinação de cada tupla de A com cada tupla em B.</li>
+        </ul>
+        <p>Derivam dos operadores fundamentais, são definidos para facilitar a especificação de certos procedimentos:</p>
+        <ul>
+            <li><strong>Junção (⋈)</strong> - Logo após a realização de um produto cartesiano em uma relação, geralmente existe a necessidade de se fazer uma seleção na qual os campos que estão em A e também estão em B sejam iguais, porque o produto cartesiano traz tuplas que não são de interesse. A junção é a operação que simplifica tudo isso. Ela realiza um produto cartesiano, depois uma seleção das tuplas de interesse e por fim uma projeção, para remoção de colunas duplicadas.</li>
+              <li><strong>Intersecção (∩)</strong> - É um operador de conjunto que retorna apenas as linhas que são comuns a duas ou mais consultas SELECT , faz como uma sobreposição de conjuntos de dados, mostrando somente os registros que existem em todos os resultados das consultas, exigindo que as consultas tenham o mesmo número e tipos de colunas. </li>
+              <li><strong>Divisão (÷)</strong> - A operação de divisão entre duas relações A ÷ B traz uma nova relação C com todas as tuplas que possuem campos em comum nas duas relações. </li>
+              <li><strong>Renomeação (ρ)</strong> - A renomeação, de maneira intuitiva, permite renomear uma relação, chamar por mais de um nome, e também nomear uma operação em cima de uma relação, por exemplo, nomear o resultado da projeção em uma relação A.
+
+</li>
+        </ul>
+     </div>
+     <h2>Quanto ao número de relações (tabelas) operandas:</h2>
+     <ul>
+        <li><strong> Unários </strong> - operam em uma única tabela.São eles: seleção, projeção, renomeação e alteração;</li>
+        <li><strong>Binários </strong> - operam em duas tabelas.São eles: união, intersecção, diferença, produto cartesiano, junção e divisão.</li>
+
+     </ul>
+     <h2>A área da matemática:</h2>
+     <ul>
+        <li><strong>Teoria dos conjuntos</strong></li> - operadores usuais da teoria de conjuntos da matemática. São eles: união, intersecção, diferença e produto cartesiano;
+        <li><strong> Especiais </strong></li> - operadores adicionais, definidos pela álgebra relacional para manipulação de dados. São eles: seleção, projeção, junção, divisão, renomeação e alteração.
+     </ul>
+
+     <div class="exemplo">
+        <h2>Exemplos</h2>
+         <div class="example-box">
+       <div class="example-title">
+        Seleção (σ) - Filtrar clientes de São Paulo
+       </div>
+       <div class="example-code">
+        σ<sub>cidade = 'São Paulo'</sub>(Clientes)
+       </div>
+       <div class="example-box">
+       <div class="example-title">
+        Projeção (π) - Listar apenas nomes e emails
+       </div>
+       <div class="example-code">
+        π<sub>nome, email</sub>(Clientes)
+       </div>
+      </div>
+      <div class="example-box">
+       <div class="example-title">
+        Join Natural (⋈) - Combinar pedidos com clientes
+       </div>
+       <div class="example-code">
+        Pedidos ⋈ Clientes
+       </div>
+      </div>
+      <div class="example-box">
+       <div class="example-title">
+        Combinação - Clientes de SP com seus pedidos
+       </div>
+       <div class="example-code">
+        π<sub>nome, data_pedido</sub>(σ<sub>cidade = 'São Paulo'</sub>(Clientes ⋈ Pedidos))
+       </div>
+      </div>
+     </div>
+     </div>
+     <h2>Quiz De Álgebra Relacional</h2>
+     <div class="quiz-container">
+  <div id="pergunta" class="pergunta"></div>
+  <div id="respostas"></div>
+  <div id="resultado"></div>
+  <div class="botoes">
+    <button onclick="proximaPergunta()">Próxima</button>
+    <button onclick="voltarPergunta()">Voltar</button>
+  </div>
+</div>
+
+<footer>Emanulli Melo | Laisa Oliveira<br> © 2025</footer>
+</body>
+</html>
